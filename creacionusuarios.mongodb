@@ -1,0 +1,82 @@
+const database = 'Stardata';
+use (database);
+collection = 'Usuarios';
+
+// Drop projects collections
+
+db.getCollection(collection).drop();
+
+// Create a users collection
+db.createCollection(collection, {
+  validator: {
+    $jsonSchema: {
+      required: ['email', 'documentId', 'name', 'lastName', 'fullName', 'role', 'status'],
+      properties: {
+        email: {
+          bsonType: 'string',
+          pattern: '^[a-z0-9+_.-]+@[a-z0-9.-]+$'
+        },
+        documentId: {
+          bsonType: 'long',
+        },
+        name: {
+          bsonType: 'string'
+        },
+        lastName: {
+          bsonType: 'string'
+        },
+        fullName: {
+          bsonType: 'string'
+        },
+        role: {
+          enum: ["admin", "leader", "student"]
+        },
+        status: {
+          enum: ["pending", "authorized", "unauthorized"]
+        },
+        password: {
+          bsonType: 'string'
+        }
+      }
+    }
+  }
+});
+
+// Create unique index for email and documentId
+db.getCollection(collection).createIndex({ email: 1 }, { unique: true });
+db.getCollection(collection).createIndex({ documentId: 1 }, { unique: true });
+
+const users = [
+  {
+    "email": "anapulido.13@gmail.com",
+    "documentId": Long('1031151729'),
+    "name": "Ana Maria",
+    "lastName": "Pulido",
+    "fullName": "Ana Maria Pulido",
+    "role": "admin",
+    "status": "pending",
+    "password": "123"
+  },
+  {
+    "email": "peter.griffin@mail.com",
+    "documentId": Long('1049639243'),
+    "name": "Juan Pablo",
+    "lastName": "Gomez",
+    "fullName": "Juan Pablo Gomez",
+    "role": "student",
+    "status": "pending",
+    "password": "456"
+  },
+  {
+    "email": "walter.white@mail.com",
+    "documentId": Long('1025342546'),
+    "name": "Walter",
+    "lastName": "White",
+    "fullName": "Walter White",
+    "role": "leader",
+    "status": "pending",
+    "password": "$2a$10$FEBywZh8u9M0Cec/0mWep.1kXrwKeiWDba6tdKvDfEBjyePJnDT7K"
+  },
+];
+// Insert users
+db.getCollection(collection).insertMany(users);

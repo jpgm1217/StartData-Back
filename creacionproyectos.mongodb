@@ -1,0 +1,91 @@
+// projects collection
+const database = 'Stardata';
+use (database);
+
+collection = 'Proyectos';
+// Drop projects collections
+db.getCollection(collection).drop();
+
+// Create projects collection
+db.createCollection(collection, {
+  validator: {
+    $jsonSchema: {
+      required: ['name', 'generalObjective', 'specificObjectives', 'budget', 'startDate', 'endDate', 'leader_id', 'status'],
+      properties: {
+        name: {
+          bsonType: 'string',
+        },
+        generalObjective: {
+          bsonType: 'string'
+        },
+        specificObjectives: {
+          bsonType: 'array'
+        },
+        budget: {
+          bsonType: 'decimal'
+        },
+        startDate: {
+          bsonType: 'date'
+        },
+        endDate: {
+          bsonType: 'date'
+        },
+        leader_id: {
+          bsonType: 'objectId'
+        },
+        status: {
+          enum: ['active', 'inactive']
+        },
+        phase: {
+          enum: ['started', 'in progress', 'ended']
+        }
+      }
+    }
+  }
+});
+
+const Proyectos = [
+  {
+    "name": "Proyecto 1",
+    "generalObjective": "Proyecto ana#1",
+    "specificObjectives": ["Lorem ipsum dolor sit amet, consectetur adipiscing elit", "Praesent nerat maxat nec mauris."],
+    "budget": Decimal128('20000000'),
+    "startDate": new Date(),
+    "endDate": new Date(new Date().getTime() + 60*24*60*60000),
+    "leader_id": db.Usuarios.findOne({email: 'anapulido.13@gmail.com'})._id,
+    "status": "inactive",
+  },
+  {
+    "name": "Proyecto 2",
+    "generalObjective": "Lorem ipsum trices non placerat maximus,nec mauris.",
+    "specificObjectives": ["Lorem ipsum dolor sit amet, consectetur adipiscing elit", "Praesent niat nec mauris."],
+    "budget": Decimal128('10000000'),
+    "startDate": new Date(),
+    "endDate": new Date(new Date().getTime() + 60*24*60*60000),
+    "leader_id": db.Usuarios.findOne({email: 'anapulido.13@gmail.com'})._id,
+    "status": "inactive",
+  },
+  {
+    "name": "Proyecto 3",
+    "generalObjective": "Lorem ipsum dolor sit amet,aximus, feugiat nec mauris.",
+    "specificObjectives": ["Lorem ipsum dolor sit amet, consectetur adipiscing elit", "Praesent nisl lacec mauris."],
+    "budget": Decimal128('15000000'),
+    "startDate": new Date(),
+    "endDate": new Date(new Date().getTime() + 60*24*60*60000),
+    "leader_id": db.Usuarios.findOne({email: 'anapulido.13@gmail.com'})._id,
+    "status": "inactive",
+  },
+  {
+    "name": "Proyectot 4",
+    "generalObjective": "Lorem ipsum rices non placerat maximus, feugiat nec mauris.",
+    "specificObjectives": ["Lorem ipsum dolor sit amet, consectetur adipiscing elit", "Praesent maximus, mauris."],
+    "budget": Decimal128('35000000'),
+    "startDate": new Date(),
+    "endDate": new Date(new Date().getTime() + 60*24*60*60000),
+    "leader_id": db.Usuarios.findOne({email: 'anapulido.13@gmail.com'})._id,
+    "status": "inactive",
+  }
+];
+
+// Insert projects
+db.getCollection(collection).insertMany(Proyectos);

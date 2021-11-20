@@ -1,0 +1,13 @@
+,const database = 'Stardata';
+use (database);
+
+collection = 'Usuarios';
+const Usuarios = [
+    {
+        "rol1" : "Administrador",
+        "rol2" : "Lider",
+        "rol3" : "Estudiante",
+        "rol4" : "Usuario",
+    }
+];
+db.getCollection(collection).insertMany(Usuarios);
