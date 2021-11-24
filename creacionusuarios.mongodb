@@ -54,28 +54,48 @@ const users = [
     "lastName": "Pulido",
     "fullName": "Ana Maria Pulido",
     "role": "admin",
-    "status": "pending",
+    "status": "authorized",
     "password": "123"
   },
   {
-    "email": "peter.griffin@mail.com",
+    "email": "juanpn@mail.com",
     "documentId": Long('1049639243'),
     "name": "Juan Pablo",
     "lastName": "Gomez",
     "fullName": "Juan Pablo Gomez",
-    "role": "student",
+    "role": "leader",
     "status": "pending",
     "password": "456"
   },
   {
-    "email": "walter.white@mail.com",
-    "documentId": Long('1025342546'),
-    "name": "Walter",
-    "lastName": "White",
-    "fullName": "Walter White",
+    "email": "sergioe@mail.com",
+    "documentId": Long('1002459259'),
+    "name": "Sergio",
+    "lastName": "Salas",
+    "fullName": "Sergio Salas",
+    "role": "student",
+    "status": "unauthorized",
+    "password": "789"
+  },
+   {
+    "email": "jhone@mail.com",
+    "documentId": Long('1128279891'),
+    "name": "Jhon",
+    "lastName": "Palacio",
+    "fullName": "Jhon Palacio",
+    "role": "student",
+    "status": "authorized",
+    "password": "789"
+  },
+   {
+    "email": "juanp@mail.com",
+    "documentId": Long('1049639143'),
+    "name": "Juan Pablo",
+    "lastName": "Gomez",
+    "fullName": "Juan Pablo Gomez",
     "role": "leader",
-    "status": "pending",
-    "password": "$2a$10$FEBywZh8u9M0Cec/0mWep.1kXrwKeiWDba6tdKvDfEBjyePJnDT7K"
+    "status": "authorized",
+    "password": "466"
   },
 ];
 // Insert users

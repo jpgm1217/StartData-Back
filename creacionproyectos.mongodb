@@ -53,7 +53,8 @@ const Proyectos = [
     "startDate": new Date(),
     "endDate": new Date(new Date().getTime() + 60*24*60*60000),
     "leader_id": db.Usuarios.findOne({email: 'anapulido.13@gmail.com'})._id,
-    "status": "inactive",
+    "status": "active",
+    "phase": "started",
   },
   {
     "name": "Proyecto 2",
@@ -64,6 +65,7 @@ const Proyectos = [
     "endDate": new Date(new Date().getTime() + 60*24*60*60000),
     "leader_id": db.Usuarios.findOne({email: 'anapulido.13@gmail.com'})._id,
     "status": "inactive",
+    "phase": "in progress",
   },
   {
     "name": "Proyecto 3",
@@ -74,17 +76,20 @@ const Proyectos = [
     "endDate": new Date(new Date().getTime() + 60*24*60*60000),
     "leader_id": db.Usuarios.findOne({email: 'anapulido.13@gmail.com'})._id,
     "status": "inactive",
+    "phase": "started",
   },
   {
-    "name": "Proyectot 4",
+    "name": "Proyecto 4",
     "generalObjective": "Lorem ipsum rices non placerat maximus, feugiat nec mauris.",
     "specificObjectives": ["Lorem ipsum dolor sit amet, consectetur adipiscing elit", "Praesent maximus, mauris."],
     "budget": Decimal128('35000000'),
     "startDate": new Date(),
     "endDate": new Date(new Date().getTime() + 60*24*60*60000),
     "leader_id": db.Usuarios.findOne({email: 'anapulido.13@gmail.com'})._id,
-    "status": "inactive",
+    "status": "active",
+    "phase": "ended",
   }
+  
 ];
 
 // Insert projects
